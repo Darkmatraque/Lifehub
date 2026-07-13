@@ -1,9 +1,11 @@
+import "./styles/global.css";
+import "./styles/layout.css";
+import "./styles/pages.css";
+
 import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
 
 import Dashboard from "./pages/Dashboard";
-
-import "./styles/layout.css";
 
 export default function App() {
 
@@ -13,13 +15,13 @@ export default function App() {
 
             <Sidebar />
 
-            <main className="content">
+            <div className="content">
 
                 <Header />
 
                 <Dashboard />
 
-            </main>
+            </div>
 
         </div>
 
