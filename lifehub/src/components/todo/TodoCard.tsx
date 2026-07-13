@@ -10,7 +10,11 @@ interface Props {
 
 }
 
-export default function TodoCard({ todo }: Props) {
+export default function TodoCard({
+
+    todo
+
+}: Props) {
 
     const toggleTodo = useTodoStore((state) => state.toggleTodo);
 
@@ -18,7 +22,7 @@ export default function TodoCard({ todo }: Props) {
 
     return (
 
-        <div className="todo-card">
+        <div className={`todo-card ${todo.priority}`}>
 
             <div>
 
@@ -30,17 +34,26 @@ export default function TodoCard({ todo }: Props) {
 
                 <p>
 
-                    {todo.category}
+                    Catégorie : {todo.category}
 
                 </p>
+
+                <small>
+
+                    Priorité : {todo.priority}
+
+                </small>
 
             </div>
 
             <div className="todo-actions">
 
                 <Button
+
                     variant="secondary"
+
                     onClick={() => toggleTodo(todo.id)}
+
                 >
 
                     {todo.completed ? "Annuler" : "Terminer"}
@@ -48,8 +61,11 @@ export default function TodoCard({ todo }: Props) {
                 </Button>
 
                 <Button
+
                     variant="danger"
+
                     onClick={() => deleteTodo(todo.id)}
+
                 >
 
                     Supprimer
