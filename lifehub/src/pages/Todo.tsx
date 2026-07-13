@@ -11,9 +11,15 @@ export default function Todo() {
 
             <h1>
 
-                Gestionnaire de tâches
+                ✅ Gestionnaire de tâches
 
             </h1>
+
+            <p>
+
+                Organise facilement toutes tes tâches.
+
+            </p>
 
             <TodoForm />
 
