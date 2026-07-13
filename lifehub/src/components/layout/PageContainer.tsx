@@ -1,21 +1,17 @@
 import { ReactNode } from "react";
 
-interface Props {
-
+interface PageContainerProps {
     children: ReactNode;
-
 }
 
-export default function PageContainer({ children }: Props) {
+export default function PageContainer({
+    children
+}: PageContainerProps) {
 
     return (
-
-        <section className="page-container">
-
+        <main className="page-container">
             {children}
-
-        </section>
-
+        </main>
     );
 
 }
