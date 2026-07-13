@@ -1,5 +1,8 @@
 import PageContainer from "../components/layout/PageContainer";
 
+import TodoForm from "../components/todo/TodoForm";
+import TodoList from "../components/todo/TodoList";
+
 export default function Todo() {
 
     return (
@@ -8,15 +11,13 @@ export default function Todo() {
 
             <h1>
 
-                To-do
+                Gestionnaire de tâches
 
             </h1>
 
-            <p>
+            <TodoForm />
 
-                Cette page accueillera bientôt ton gestionnaire de tâches.
-
-            </p>
+            <TodoList />
 
         </PageContainer>
 
