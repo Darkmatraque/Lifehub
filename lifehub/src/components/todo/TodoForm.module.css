@@ -1,0 +1,54 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: #1e2a3a;
+  border-radius: 8px;
+  border: 1px solid #2d3e52;
+}
+
+.textarea {
+  padding: 12px;
+  background: #0f1419;
+  border: 1px solid #2d3e52;
+  border-radius: 6px;
+  color: #fff;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.textarea::placeholder {
+  color: #666;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.select {
+  padding: 10px 12px;
+  background: #0f1419;
+  border: 1px solid #2d3e52;
+  border-radius: 6px;
+  color: #fff;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.select option {
+  background: #1a2332;
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}

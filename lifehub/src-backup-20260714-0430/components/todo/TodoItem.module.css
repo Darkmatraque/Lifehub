@@ -1,0 +1,94 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: #1e2a3a;
+  border-left: 4px solid #6366f1;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  transition: all 0.2s;
+}
+
+.item:hover {
+  background: #243447;
+}
+
+.item.completed {
+  opacity: 0.6;
+}
+
+.item.completed .title {
+  text-decoration: line-through;
+  color: #666;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #6366f1;
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  margin: 0 0 4px 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.description {
+  margin: 0 0 8px 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category,
+.priority,
+.dueDate {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #2d3e52;
+  color: #ccc;
+}
+
+.priority {
+  color: white;
+}
+
+.dueDate {
+  background: transparent;
+  border: 1px solid #2d3e52;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editBtn,
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  transition: transform 0.2s;
+}
+
+.editBtn:hover,
+.deleteBtn:hover {
+  transform: scale(1.2);
+}

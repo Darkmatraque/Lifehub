@@ -24,4 +24,20 @@ export interface Todo {
 
     updatedAt: string;
 
+}export interface Todo {
+  id: string;
+  title: string;
+  description: string;
+  category: 'Personnel' | 'Travail' | 'Santé' | 'Finances';
+  priority: 'low' | 'medium' | 'high';
+  completed: boolean;
+  dueDate: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface TodoFilter {
+  category?: string;
+  priority?: string;
+  completed?: boolean;
 }

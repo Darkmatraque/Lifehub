@@ -1,0 +1,48 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sm {
+  font-size: 12px;
+  padding: 4px 12px;
+}
+
+.md {
+  font-size: 14px;
+  padding: 6px 14px;
+}
+
+.primary {
+  background: #6366f1;
+  color: white;
+}
+
+.success {
+  background: #10b981;
+  color: white;
+}
+
+.warning {
+  background: #f59e0b;
+  color: white;
+}
+
+.danger {
+  background: #ef4444;
+  color: white;
+}
+
+.info {
+  background: #3b82f6;
+  color: white;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}

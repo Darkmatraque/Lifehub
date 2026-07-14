@@ -1,0 +1,26 @@
+.filter {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.select {
+  flex: 1;
+  padding: 10px 12px;
+  background: #1e2a3a;
+  border: 1px solid #2d3e52;
+  border-radius: 6px;
+  color: #fff;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.select option {
+  background: #1a2332;
+  color: #fff;
+}

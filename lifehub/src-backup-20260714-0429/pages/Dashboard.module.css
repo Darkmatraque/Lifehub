@@ -1,0 +1,44 @@
+.dashboard {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 32px 0;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  gap: 32px;
+}
+
+.section {
+  background: #141b27;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #2d3e52;
+}
+
+.sectionTitle {
+  margin: 0 0 16px 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.empty {
+  color: #888;
+  text-align: center;
+  padding: 32px;
+  margin: 0;
+}

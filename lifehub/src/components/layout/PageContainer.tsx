@@ -1,17 +1,13 @@
-import { ReactNode } from "react";
+import styles from './PageContainer.module.css';
 
 interface PageContainerProps {
-    children: ReactNode;
+  children: React.ReactNode;
 }
 
-export default function PageContainer({
-    children
-}: PageContainerProps) {
-
-    return (
-        <main className="page-container">
-            {children}
-        </main>
-    );
-
+export default function PageContainer({ children }: PageContainerProps) {
+  return (
+    <main className={styles.pageContainer}>
+      {children}
+    </main>
+  );
 }

@@ -18,60 +18,38 @@ import Settings from "./pages/Settings";
 import { useAppStore } from "./store/appStore";
 
 export default function App() {
+  const page = useAppStore(state => state.currentPage);
 
-    const page = useAppStore(state => state.currentPage);
-
-    function renderPage() {
-
-        switch(page){
-
-            case "dashboard":
-                return <Dashboard />;
-
-            case "todo":
-                return <Todo />;
-
-            case "notes":
-                return <Notes />;
-
-            case "calendar":
-                return <Calendar />;
-
-            case "budget":
-                return <Budget />;
-
-            case "goals":
-                return <Goals />;
-
-            case "journal":
-                return <Journal />;
-
-            case "settings":
-                return <Settings />;
-
-            default:
-                return <Dashboard />;
-
-        }
-
+  function renderPage() {
+    switch(page){
+      case "dashboard":
+        return <Dashboard />;
+      case "todo":
+        return <Todo />;
+      case "notes":
+        return <Notes />;
+      case "calendar":
+        return <Calendar />;
+      case "budget":
+        return <Budget />;
+      case "goals":
+        return <Goals />;
+      case "journal":
+        return <Journal />;
+      case "settings":
+        return <Settings />;
+      default:
+        return <Dashboard />;
     }
+  }
 
-    return (
-
-        <div className="layout">
-
-            <Sidebar />
-
-            <div className="content">
-
-                <Header />
-
-                {renderPage()}
-
-            </div>
-
-        </div>
-
-    );
-
+  return (
+    <div className="layout">
+      <Sidebar />
+      <div className="content">
+        <Header />
+        {renderPage()}
+      </div>
+    </div>
+  );
 }

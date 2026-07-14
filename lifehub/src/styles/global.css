@@ -1,76 +1,109 @@
-:root{
+@import './variables.css';
 
---background:#0f172a;
---surface:#1e293b;
---primary:#6366f1;
---success:#22c55e;
---warning:#f59e0b;
---danger:#ef4444;
---text:#f8fafc;
---text-secondary:#94a3b8;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
-html,
-body,
-#root{
-
-width:100%;
-height:100%;
-
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body{
-
-font-family:Inter,Arial,Helvetica,sans-serif;
-
-background:var(--background);
-
-color:var(--text);
-
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
 
-.app{
-
-width:100%;
-height:100vh;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-gap:20px;
-
-background:
-radial-gradient(circle at top,#4f46e5 0%,transparent 40%),
-var(--background);
-
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-h1{
-
-font-size:72px;
-
-font-weight:800;
-
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
 }
 
-p{
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+}
 
-color:var(--text-secondary);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
 
-font-size:18px;
+/* Selection */
+::selection {
+  background-color: var(--accent-purple);
+  color: white;
+}
 
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--accent-purple);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-purple-dark);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Utility Classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

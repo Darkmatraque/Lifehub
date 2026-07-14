@@ -1,0 +1,61 @@
+@import '../../styles/variables.css';
+
+.pageContainer {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--spacing-2xl);
+  background: var(--bg-primary);
+  
+  /* Scrollbar personnalisée */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-purple) transparent;
+  
+  animation: fadeIn var(--transition-base);
+}
+
+.pageContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pageContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pageContainer::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.pageContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple-dark);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pageContainer {
+    padding: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: var(--spacing-md);
+  }
+}

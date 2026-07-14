@@ -1,0 +1,35 @@
+.tabs {
+  width: 100%;
+}
+
+.tabList {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #2d3e52;
+  overflow-x: auto;
+}
+
+.tabButton {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  color: #fff;
+}
+
+.tabButton.active {
+  color: #6366f1;
+  border-bottom-color: #6366f1;
+}
+
+.tabContent {
+  padding-top: 20px;
+}

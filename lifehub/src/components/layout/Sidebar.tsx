@@ -1,55 +1,42 @@
 import { useAppStore } from "../../store/appStore";
-
-const pages = [
-    { id: "dashboard", label: "🏠 Dashboard" },
-    { id: "todo", label: "✅ To-do" },
-    { id: "notes", label: "📝 Notes" },
-    { id: "calendar", label: "📅 Calendrier" },
-    { id: "budget", label: "💰 Budget" },
-    { id: "goals", label: "🎯 Objectifs" },
-    { id: "journal", label: "📖 Journal" },
-    { id: "settings", label: "⚙️ Paramètres" }
-];
+import Navigation from "./Navigation";
+import { X } from "lucide-react";
+import "./Sidebar.css";
 
 export default function Sidebar() {
+  const { sidebarOpen, toggleSidebar } = useAppStore();
 
-    const currentPage = useAppStore((state) => state.currentPage);
-    const setCurrentPage = useAppStore((state) => state.setCurrentPage);
+  return (
+    <>
+      {/* Overlay pour mobile */}
+      {sidebarOpen && (
+        <div className="sidebar-overlay" onClick={toggleSidebar} />
+      )}
 
-    return (
+      {/* Sidebar */}
+      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+        {/* Header */}
+        <div className="sidebar-header">
+          <h1 className="logo">LifeHub</h1>
+          <button
+            className="sidebar-close"
+            onClick={toggleSidebar}
+            aria-label="Close sidebar"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-        <aside className="sidebar">
+        {/* Navigation */}
+        <div className="sidebar-content">
+          <Navigation />
+        </div>
 
-            <div className="sidebar-logo">
-
-                LifeHub
-
-            </div>
-
-            <nav className="sidebar-nav">
-
-                {pages.map((page) => (
-
-                    <button
-                        key={page.id}
-                        className={
-                            currentPage === page.id
-                                ? "sidebar-button active"
-                                : "sidebar-button"
-                        }
-                        onClick={() => setCurrentPage(page.id as any)}
-                    >
-
-                        {page.label}
-
-                    </button>
-
-                ))}
-
-            </nav>
-
-        </aside>
-
-    );
-
+        {/* Footer */}
+        <div className="sidebar-footer">
+          <p className="version">v1.0.0</p>
+        </div>
+      </aside>
+    </>
+  );
 }
