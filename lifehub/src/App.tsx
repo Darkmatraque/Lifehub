@@ -7,7 +7,7 @@ import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
 
 import Dashboard from "./pages/Dashboard";
-import Todo from "./pages/Todo";
+import TodoPage from "./pages/TodoPage";  // ✅ NOUVELLE LIGNE
 import Notes from "./pages/Notes";
 import Calendar from "./pages/Calendar";
 import Budget from "./pages/Budget";
@@ -25,7 +25,7 @@ export default function App() {
       case "dashboard":
         return <Dashboard />;
       case "todo":
-        return <Todo />;
+        return <TodoPage />;  // ✅ MODIFIÉ ICIICI
       case "notes":
         return <Notes />;
       case "calendar":
