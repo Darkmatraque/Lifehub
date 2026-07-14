@@ -15,7 +15,7 @@ const pageNames: Record<string, string> = {
 };
 
 export default function Header() {
-  const { currentPage, toggleSidebar, sidebarOpen } = useAppStore();
+  const { currentPage, toggleSidebar, sidebarOpen, setCurrentPage } = useAppStore();
   const [searchActive, setSearchActive] = useState(false);
 
   return (
@@ -47,20 +47,35 @@ export default function Header() {
             onBlur={() => setSearchActive(false)}
             aria-label="Rechercher"
           />
-          <kbd>Ctrl K</kbd>
         </div>
       </div>
 
-      {/* Action buttons */}
+      {/* Right buttons */}
       <div className="header-right">
-        <button className="icon-button" aria-label="Nouvelle tâche" title="Nouvelle tâche">
+        {/* New task button */}
+        <button 
+          className="header-btn header-btn-primary"
+          onClick={() => setCurrentPage("todo")}
+          title="Nouvelle tâche"
+        >
           <Plus size={20} />
         </button>
-        <button className="icon-button" aria-label="Notifications" title="Notifications">
+
+        {/* Notifications */}
+        <button 
+          className="header-btn"
+          onClick={() => console.log("Notifications")}
+          title="Notifications"
+        >
           <Bell size={20} />
-          <span className="badge">3</span>
         </button>
-        <button className="icon-button" aria-label="Paramètres" title="Paramètres">
+
+        {/* Settings */}
+        <button 
+          className="header-btn"
+          onClick={() => setCurrentPage("settings")}
+          title="Paramètres"
+        >
           <Settings size={20} />
         </button>
       </div>
