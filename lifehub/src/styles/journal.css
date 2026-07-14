@@ -1,0 +1,116 @@
+/* Journal Page Styles */
+.journal-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.journal-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.journal-button:hover {
+  background-color: #45a049;
+}
+
+.journal-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.journal-form input,
+.journal-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.journal-entries {
+  display: grid;
+  gap: 20px;
+}
+
+.journal-entry {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.journal-entry-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.journal-entry-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.journal-entry-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.journal-entry-mood {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 5px 0;
+  font-size: 0.85rem;
+}
+
+.journal-entry-mood.happy {
+  background-color: #FFE5B4;
+  color: #FF8C00;
+}
+
+.journal-entry-mood.neutral {
+  background-color: #E0E0E0;
+  color: #666;
+}
+
+.journal-entry-mood.sad {
+  background-color: #B0E0E6;
+  color: #0077BE;
+}
+
+.journal-entry-content {
+  color: #333;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.journal-entry-delete {
+  padding: 5px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.journal-entry-delete:hover {
+  background-color: #da190b;
+}

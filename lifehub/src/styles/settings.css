@@ -1,0 +1,131 @@
+/* Settings Page Styles */
+.settings-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  margin-bottom: 30px;
+}
+
+.settings-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.settings-section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.settings-section h2 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
+}
+
+.settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.settings-option:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.settings-input {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.settings-select {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.settings-toggle {
+  width: 50px;
+  height: 28px;
+  background-color: #ccc;
+  border-radius: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.settings-toggle.active {
+  background-color: #4CAF50;
+}
+
+.settings-toggle::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s;
+}
+
+.settings-toggle.active::after {
+  left: 24px;
+}
+
+.settings-button {
+  padding: 12px 30px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.settings-button:hover {
+  background-color: #45a049;
+}
+
+.settings-button.danger {
+  background-color: #f44336;
+}
+
+.settings-button.danger:hover {
+  background-color: #da190b;
+}
+
+.settings-info {
+  background-color: #E3F2FD;
+  padding: 15px;
+  border-radius: 4px;
+  color: #1565C0;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  border-left: 4px solid #1565C0;
+}

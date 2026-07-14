@@ -30,7 +30,7 @@ export interface CalendarEvent {
   description: string;
   date: string;
   time: string;
-  duration: number; // en minutes
+  duration: number;
   createdAt: string;
 }
 
@@ -49,7 +49,7 @@ export interface Goal {
   title: string;
   description: string;
   targetDate: string;
-  progress: number; // 0-100
+  progress: number;
   category: string;
   createdAt: string;
 }
@@ -64,17 +64,27 @@ export interface JournalEntry {
 }
 
 // ============================================
-// STORE STATE
+// APP STATE INTERFACE
 // ============================================
+
+export type AppPage =
+  | "dashboard"
+  | "todo"
+  | "notes"
+  | "calendar"
+  | "budget"
+  | "goals"
+  | "journal"
+  | "settings";
 
 interface AppState {
   // UI State
-  currentPage: string;
+  currentPage: AppPage;
   sidebarOpen: boolean;
   toggleSidebar: () => void;
-  setCurrentPage: (page: string) => void;
+  setCurrentPage: (page: AppPage) => void;
 
-  // Tasks
+  // Tasks (Todo)
   tasks: Task[];
   addTask: (task: Omit<Task, "id" | "createdAt">) => void;
   deleteTask: (id: string) => void;
@@ -119,168 +129,209 @@ interface AppState {
 export const useAppStore = create<AppState>()(
   persist(
     (set) => ({
-      // UI
+      // ============================================
+      // UI STATE ACTIONS
+      // ============================================
       currentPage: "dashboard",
       sidebarOpen: true,
-      toggleSidebar: () =>
-        set((state) => ({ sidebarOpen: !state.sidebarOpen })),
-      setCurrentPage: (page: string) => set({ currentPage: page }),
 
-      // Tasks
+      toggleSidebar: () =>
+        set((state) => ({
+          sidebarOpen: !state.sidebarOpen,
+        })),
+
+      setCurrentPage: (page: AppPage) =>
+        set({
+          currentPage: page,
+        }),
+
+      // ============================================
+      // TASKS (TODO) ACTIONS
+      // ============================================
       tasks: [],
+
       addTask: (task) =>
         set((state) => ({
           tasks: [
             ...state.tasks,
             {
               ...task,
-              id: Date.now().toString(),
+              id: `task-${Date.now()}-${Math.random()}`,
               createdAt: new Date().toISOString(),
             },
           ],
         })),
-      deleteTask: (id) =>
+
+      deleteTask: (id: string) =>
         set((state) => ({
-          tasks: state.tasks.filter((task) => task.id !== id),
+          tasks: state.tasks.filter((t) => t.id !== id),
         })),
-      updateTask: (id, updates) =>
+
+      updateTask: (id: string, updates: Partial<Task>) =>
         set((state) => ({
-          tasks: state.tasks.map((task) =>
-            task.id === id ? { ...task, ...updates } : task
-          ),
-        })),
-      completeTask: (id) =>
-        set((state) => ({
-          tasks: state.tasks.map((task) =>
-            task.id === id ? { ...task, completed: !task.completed } : task
+          tasks: state.tasks.map((t) =>
+            t.id === id ? { ...t, ...updates } : t
           ),
         })),
 
-      // Notes
+      completeTask: (id: string) =>
+        set((state) => ({
+          tasks: state.tasks.map((t) =>
+            t.id === id ? { ...t, completed: !t.completed } : t
+          ),
+        })),
+
+      // ============================================
+      // NOTES ACTIONS
+      // ============================================
       notes: [],
+
       addNote: (note) =>
         set((state) => ({
           notes: [
             ...state.notes,
             {
               ...note,
-              id: Date.now().toString(),
+              id: `note-${Date.now()}-${Math.random()}`,
               createdAt: new Date().toISOString(),
               updatedAt: new Date().toISOString(),
             },
           ],
         })),
-      deleteNote: (id) =>
+
+      deleteNote: (id: string) =>
         set((state) => ({
-          notes: state.notes.filter((note) => note.id !== id),
+          notes: state.notes.filter((n) => n.id !== id),
         })),
-      updateNote: (id, updates) =>
+
+      updateNote: (id: string, updates: Partial<Note>) =>
         set((state) => ({
-          notes: state.notes.map((note) =>
-            note.id === id
-              ? { ...note, ...updates, updatedAt: new Date().toISOString() }
-              : note
+          notes: state.notes.map((n) =>
+            n.id === id
+              ? { ...n, ...updates, updatedAt: new Date().toISOString() }
+              : n
           ),
         })),
 
-      // Events
+      // ============================================
+      // CALENDAR EVENTS ACTIONS
+      // ============================================
       events: [],
+
       addEvent: (event) =>
         set((state) => ({
           events: [
             ...state.events,
             {
               ...event,
-              id: Date.now().toString(),
+              id: `event-${Date.now()}-${Math.random()}`,
               createdAt: new Date().toISOString(),
             },
           ],
         })),
-      deleteEvent: (id) =>
+
+      deleteEvent: (id: string) =>
         set((state) => ({
-          events: state.events.filter((event) => event.id !== id),
+          events: state.events.filter((e) => e.id !== id),
         })),
-      updateEvent: (id, updates) =>
+
+      updateEvent: (id: string, updates: Partial<CalendarEvent>) =>
         set((state) => ({
-          events: state.events.map((event) =>
-            event.id === id ? { ...event, ...updates } : event
+          events: state.events.map((e) =>
+            e.id === id ? { ...e, ...updates } : e
           ),
         })),
 
-      // Budget
+      // ============================================
+      // BUDGET ACTIONS
+      // ============================================
       budgetItems: [],
+
       addBudgetItem: (item) =>
         set((state) => ({
           budgetItems: [
             ...state.budgetItems,
             {
               ...item,
-              id: Date.now().toString(),
+              id: `budget-${Date.now()}-${Math.random()}`,
               createdAt: new Date().toISOString(),
             },
           ],
         })),
-      deleteBudgetItem: (id) =>
+
+      deleteBudgetItem: (id: string) =>
         set((state) => ({
-          budgetItems: state.budgetItems.filter((item) => item.id !== id),
+          budgetItems: state.budgetItems.filter((b) => b.id !== id),
         })),
-      updateBudgetItem: (id, updates) =>
+
+      updateBudgetItem: (id: string, updates: Partial<BudgetItem>) =>
         set((state) => ({
-          budgetItems: state.budgetItems.map((item) =>
-            item.id === id ? { ...item, ...updates } : item
+          budgetItems: state.budgetItems.map((b) =>
+            b.id === id ? { ...b, ...updates } : b
           ),
         })),
 
-      // Goals
+      // ============================================
+      // GOALS ACTIONS
+      // ============================================
       goals: [],
+
       addGoal: (goal) =>
         set((state) => ({
           goals: [
             ...state.goals,
             {
               ...goal,
-              id: Date.now().toString(),
+              id: `goal-${Date.now()}-${Math.random()}`,
               createdAt: new Date().toISOString(),
             },
           ],
         })),
-      deleteGoal: (id) =>
+
+      deleteGoal: (id: string) =>
         set((state) => ({
-          goals: state.goals.filter((goal) => goal.id !== id),
+          goals: state.goals.filter((g) => g.id !== id),
         })),
-      updateGoal: (id, updates) =>
+
+      updateGoal: (id: string, updates: Partial<Goal>) =>
         set((state) => ({
-          goals: state.goals.map((goal) =>
-            goal.id === id ? { ...goal, ...updates } : goal
+          goals: state.goals.map((g) =>
+            g.id === id ? { ...g, ...updates } : g
           ),
         })),
 
-      // Journal
+      // ============================================
+      // JOURNAL ACTIONS
+      // ============================================
       entries: [],
+
       addEntry: (entry) =>
         set((state) => ({
           entries: [
             ...state.entries,
             {
               ...entry,
-              id: Date.now().toString(),
+              id: `entry-${Date.now()}-${Math.random()}`,
               createdAt: new Date().toISOString(),
             },
           ],
         })),
-      deleteEntry: (id) =>
+
+      deleteEntry: (id: string) =>
         set((state) => ({
-          entries: state.entries.filter((entry) => entry.id !== id),
+          entries: state.entries.filter((e) => e.id !== id),
         })),
-      updateEntry: (id, updates) =>
+
+      updateEntry: (id: string, updates: Partial<JournalEntry>) =>
         set((state) => ({
-          entries: state.entries.map((entry) =>
-            entry.id === id ? { ...entry, ...updates } : entry
+          entries: state.entries.map((e) =>
+            e.id === id ? { ...e, ...updates } : e
           ),
         })),
     }),
     {
       name: "app-store",
+      version: 1,
     }
   )
 );

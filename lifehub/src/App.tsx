@@ -7,37 +7,37 @@ import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
 
 import Dashboard from "./pages/Dashboard";
-import TodoPage from "./pages/TodoPage";  // ✅ NOUVELLE LIGNE
-import Notes from "./pages/Notes";
-import Calendar from "./pages/Calendar";
-import Budget from "./pages/Budget";
-import Goals from "./pages/Goals";
-import Journal from "./pages/Journal";
-import Settings from "./pages/Settings";
+import TodoPage from "./pages/TodoPage";
+import NotesPage from "./pages/NotesPage";
+import CalendarPage from "./pages/CalendarPage";
+import BudgetPage from "./pages/BudgetPage";
+import GoalsPage from "./pages/GoalsPage";
+import JournalPage from "./pages/JournalPage";
+import SettingsPage from "./pages/SettingsPage";
 
 import { useAppStore } from "./store/appStore";
 
 export default function App() {
-  const page = useAppStore(state => state.currentPage);
+  const currentPage = useAppStore((state) => state.currentPage);
 
   function renderPage() {
-    switch(page){
+    switch (currentPage) {
       case "dashboard":
         return <Dashboard />;
       case "todo":
-        return <TodoPage />;  // ✅ MODIFIÉ ICIICI
+        return <TodoPage />;
       case "notes":
-        return <Notes />;
+        return <NotesPage />;
       case "calendar":
-        return <Calendar />;
+        return <CalendarPage />;
       case "budget":
-        return <Budget />;
+        return <BudgetPage />;
       case "goals":
-        return <Goals />;
+        return <GoalsPage />;
       case "journal":
-        return <Journal />;
+        return <JournalPage />;
       case "settings":
-        return <Settings />;
+        return <SettingsPage />;
       default:
         return <Dashboard />;
     }
