@@ -9,7 +9,7 @@ import {
   BookOpen,
   Settings,
 } from "lucide-react";
-import "./Navigation.css";
+import styles from "./Navigation.module.css";
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -26,7 +26,7 @@ export default function Navigation() {
   const { currentPage, setCurrentPage } = useAppStore();
 
   return (
-    <nav className="navigation">
+    <nav className={styles.navigation}>
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = currentPage === item.id;
@@ -34,13 +34,13 @@ export default function Navigation() {
         return (
           <button
             key={item.id}
-            className={`nav-item ${isActive ? "active" : ""}`}
+            className={`${styles.navItem} ${isActive ? styles.active : ""}`}
             onClick={() => setCurrentPage(item.id as any)}
             aria-current={isActive ? "page" : undefined}
             title={item.label}
           >
             <Icon size={20} />
-            <span className="nav-label">{item.label}</span>
+            <span className={styles.navLabel}>{item.label}</span>
           </button>
         );
       })}

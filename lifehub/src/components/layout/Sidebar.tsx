@@ -1,7 +1,7 @@
 import { useAppStore } from "../../store/appStore";
 import Navigation from "./Navigation";
 import { X } from "lucide-react";
-import "./Sidebar.css";
+import styles from "./Sidebar.module.css";
 
 export default function Sidebar() {
   const { sidebarOpen, toggleSidebar } = useAppStore();
@@ -10,16 +10,16 @@ export default function Sidebar() {
     <>
       {/* Overlay pour mobile */}
       {sidebarOpen && (
-        <div className="sidebar-overlay" onClick={toggleSidebar} />
+        <div className={styles.sidebarOverlay} onClick={toggleSidebar} />
       )}
 
       {/* Sidebar */}
-      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+      <aside className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
         {/* Header */}
-        <div className="sidebar-header">
-          <h1 className="logo">LifeHub</h1>
+        <div className={styles.sidebarHeader}>
+          <h1 className={styles.logo}>LifeHub</h1>
           <button
-            className="sidebar-close"
+            className={styles.sidebarClose}
             onClick={toggleSidebar}
             aria-label="Close sidebar"
           >
@@ -28,13 +28,13 @@ export default function Sidebar() {
         </div>
 
         {/* Navigation */}
-        <div className="sidebar-content">
+        <div className={styles.sidebarContent}>
           <Navigation />
         </div>
 
         {/* Footer */}
-        <div className="sidebar-footer">
-          <p className="version">v1.0.0</p>
+        <div className={styles.sidebarFooter}>
+          <p className={styles.version}>v1.0.0</p>
         </div>
       </aside>
     </>

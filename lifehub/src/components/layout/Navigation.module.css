@@ -1,0 +1,42 @@
+@import '../../styles/variables.css';
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  text-align: left;
+  width: 100%;
+}
+
+.navItem:hover {
+  background-color: rgba(168, 85, 247, 0.08);
+  color: var(--text-primary);
+}
+
+.navItem.active {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-purple-dark) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.navLabel {
+  flex: 1;
+  text-align: left;
+}

@@ -4,13 +4,13 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-xl);  /* ← Change 2xl → xl (2rem au lieu de 3rem) */
   background: var(--bg-primary);
-  
+
   /* Scrollbar personnalisée */
   scrollbar-width: thin;
   scrollbar-color: var(--accent-purple) transparent;
-  
+
   animation: fadeIn var(--transition-base);
 }
 
@@ -44,18 +44,18 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .pageContainer {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);  /* ← Aussi change ici */
   }
 }
 
 @media (max-width: 768px) {
   .pageContainer {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
   }
 }
 
 @media (max-width: 480px) {
   .pageContainer {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);  /* ← Et ici */
   }
 }
